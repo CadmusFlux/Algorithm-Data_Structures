@@ -2,7 +2,7 @@
 
 Build a Tower using asterik symbol "*" .
 Input :  Number of floors will be passed as an argument.
-Ouput : Print a formatted list with each list item having the same number of elements. Fill the non-asterik Places with spaces.
+Ouput :  Print a formatted list with each list item having the same number of elements. Fill the non-asterik Places with spaces.
 
 Sample Input and Output : tower_builder(4) : ['   *   ', '  ***  ', ' ***** ', '*******']
 
