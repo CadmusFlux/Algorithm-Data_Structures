@@ -1,5 +1,5 @@
 Problem Statement : 
-                   Take a number and sum it's consecutive digits with consecutive powers . Return the numbers whose  sum is equal to the original number. 
+                  Take a number and sum it's consecutive digits with consecutive powers . Return the numbers whose  sum is equal to the original number. 
                    
 Input :  Range : (a,b)
 Output : List with numbers satisfying the condition.
