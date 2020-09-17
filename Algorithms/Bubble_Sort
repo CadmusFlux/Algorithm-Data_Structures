@@ -1,0 +1,21 @@
+Concept :  Comparing Each element with the adjacent element and swapping both if element is greater than the adjacent element. The end goal is to make push the Largest element
+           to the last index.
+           Repeat the above steps to push the largest element to the last index excluding the elements already sorted in previous steps.
+           
+Example : array = [45,24,8,37,6]
+          1) [45,24,8,37,6]->[24,45,8,37,6]->[24,8,45,37,6]->[24,8,37,45,6]->[24,8,37,6,45]
+          2) [8,24,6,37,45]
+          3) [8,6,24,37,45]
+          
+Code : 
+
+      def Bubble_sort(list1):
+          for i in range(len(list1)):
+            for j in range(len(list1)-i-1):
+              if list1[j]>list1[j+1]:
+                list1[j],list1[j+1] = list1[j+1],list1[j]
+          return list1
+
+      Bubble_sort([45,8,24,37,6,9,1])
+      
+      Output : [1, 6, 8, 9, 24, 37, 45]
