@@ -1,0 +1,15 @@
+Code :
+
+      def InsertSort(list):
+        for i in range(len(list)):
+          currentval = list[i]
+          j = i-1
+          while j>=0 and list[j]>currentval:
+            list[j+1] = list[j]
+            j -= 1
+          list[j+1] = currentval
+        return list
+
+      InsertSort([45,7,8,6,34,2,0,65,84.6])
+      
+Output : [0, 2, 6, 7, 8, 34, 45, 65, 84.6]
