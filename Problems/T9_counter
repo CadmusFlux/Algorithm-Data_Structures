@@ -1,0 +1,34 @@
+Statement : Write an algorithm to predict the number of times the user would have to press a certain button to type a string in T9 format.
+
+Input : String "daddasdasdADASD sadad 1312312 !@!#@"
+
+Output : Integer [ 55 ]
+
+Code : 
+
+      def presses(phrase):
+        phrase = phrase.upper()
+        x = 0
+        for i in range(len(phrase)):
+          if phrase[i].isalpha() and ord(phrase[i])<80:
+            x += ((ord(phrase[i])-65) % 3) + 1
+          elif phrase[i].isalpha() and 79<ord(phrase[i])<84:
+            x += ((ord(phrase[i])-80) % 4) + 1
+          elif phrase[i].isalpha() and 83<ord(phrase[i])<87:
+            x += ((ord(phrase[i])-84) % 3) + 1
+          elif phrase[i].isalpha() and 86<ord(phrase[i])<91:
+            x += ((ord(phrase[i])-87) % 4) + 1
+          elif phrase[i]=="0":
+            x += 2
+          elif phrase[i]=="1" or phrase[i]=="#" or phrase[i]=="*" or phrase[i]==" " :
+            x += 1
+          elif phrase[i]=="7" or phrase[i]=="9" :
+            x += 5
+          elif phrase[i]=="2" or phrase[i]=="3" or phrase[i]=="4" or phrase[i]=="5" or phrase[i]=="6" or phrase[i]=="8":
+            x += 4
+
+         return x
+         
+      presses("YNOFBS#C4N1SJ9UOGS")
+      
+ Output : 48
