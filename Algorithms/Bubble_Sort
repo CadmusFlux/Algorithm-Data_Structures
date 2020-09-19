@@ -8,7 +8,7 @@ Example : array = [45,24,8,37,6]
           3) [8,6,24,37,45]
           
 Code : 
-```python
+      ```python
       def Bubble_sort(list1):
           for i in range(len(list1)):
             for j in range(len(list1)-i-1):
@@ -17,6 +17,6 @@ Code :
           return list1
 
       Bubble_sort([45,8,24,37,6,9,1])
-```
+      ```
       
       Output : [1, 6, 8, 9, 24, 37, 45]
