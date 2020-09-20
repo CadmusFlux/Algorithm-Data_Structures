@@ -32,3 +32,19 @@ Code :
       presses("YNOFBS#C4N1SJ9UOGS")
       
  Output : 48
+ 
+Refactored Code : 
+                  def presses(phrase):
+                    BUTTONS = ["1","abc2","def3","ghi4","jkl5","mno6","pqrs7","tuv8"
+                                ,"wxyz9","*"," 0","#"]
+                    x = 0 
+                    for c in phrase.lower():
+                      for button in BUTTONS:
+                        if c in button:
+                          x += (button.find(c)+1)
+                    return x
+
+                  presses("abcdefghijklmnopqrstucwxyz*#0 7")
+                  
+                  
+Output  : 66
