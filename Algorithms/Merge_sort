@@ -1,5 +1,5 @@
 Definition:  Merge sort works by dividing the given list into smaller sublists until there is single element left in each sublist. Then comparing each sublist with it's 
-             neighbouring sublist and sorting them. After sorting the two sublist merge the . Repeat the above process until a list with length equal to input list is 
+             neighbouring sublist and sorting them. After sorting the two sublist merge them . Repeat the above process until a list with length equal to input list is 
              obtained.
              
 Input : List [37,45,12,1,3,4,52,36,49]
