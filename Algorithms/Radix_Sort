@@ -1,0 +1,23 @@
+Code : 
+        import math
+
+        def get_max(list):
+          return len(str(max(list)))
+        def get_digit(num,place):
+          return math.floor(num/math.pow(10,place))%10
+
+        def Radix_sort(list):
+          bucket = []
+          max_elem = get_max(list)
+          for i in range(max_elem):
+            bucket = [[] for i in range(10)]
+            for j in list:
+              digit = get_digit(j,i)
+              bucket[digit].append(j)
+            list = [ item for sublist in bucket for item in sublist]
+          return list
+
+
+        print(Radix_sort([0,2134,311,62,683,89,15]))
+        
+        [0, 15, 62, 89, 311, 683, 2134]
