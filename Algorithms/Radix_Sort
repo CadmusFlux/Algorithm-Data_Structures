@@ -1,3 +1,14 @@
+Definition :  1) This algorithm is classified as integer sort as it doesn't use comaprison for sorting elements. The basic ideology behind this algorithm is to classify integers
+                 based on the digits present on (unit,tens,thousand) places. 
+              2) We start by creating two helper functions , one function helps in getting the digit in (units,tens..) place from the number and another function returns the 
+                 maximum digit from the list.
+              3) The basic functionality of radix sort is to create buckets (containers) from number 0-9 and placing the corresponding digits in the indexes. The list with 10 
+                 sublist is flattened to a single list and replaces the original list.
+               4) This process repeats for  (number returned by the get_max helper function ) times .
+               
+Input  : List (Num)
+
+Output : List (Num)
 Code : 
         import math
 
