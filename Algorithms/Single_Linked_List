@@ -1,0 +1,83 @@
+ Code  :
+
+        class Node:
+          def __init__(self,data=None,next=None):
+            self.data = data
+            self.next = None
+
+        class SLL:
+
+          def __init__(self,head=None):
+            self.head = head
+
+          def Insert(self,data):
+            new_node = Node(data)
+            if self.head is None:
+              new_node.next = self.head
+              self.head = new_node
+            else:
+              temp = self.head
+              while temp.next != None:
+                temp = temp.next
+              temp.next = new_node
+
+          def delete(self,value):
+            temp4 = self.head
+            count2 = 0
+            if self.head == None:
+              print("List Undeflow")
+
+            else: 
+              while count2 != value:
+                temp1_prev = temp4
+                temp4 = temp4.next
+                count2 += 1
+              temp1_prev.next = temp4.next
+              temp4 = None
+
+          def insert_at_mid(self,position,data):
+            count1 = 0
+            temp3 = self.head
+            while count1 != position:
+              temp_prev = temp3
+              temp3 = temp3.next
+              count1 += 1
+            new_node = Node(data)
+            temp_prev.next = new_node
+            new_node.next = temp3
+
+          def find_elem(self,key1):
+            temp2 = self.head
+            count = 0 
+            while temp2 != None:
+              if temp2.data == key1:
+                print("The index of element is :"+ str(count))
+                return 0
+              else:
+                temp2 = temp2.next
+                count += 1
+
+          def size(self):
+            temp5 = self.head
+            count3 = 0
+            while temp5 != None:
+              temp5 = temp5.next
+              count3 += 1
+            print("\n",count3)
+            return 0
+
+          def display(self):
+            temp1 = self.head
+            while temp1.next != None:
+              print(temp1.data , "-->",end = " ")
+              temp1 = temp1.next
+            print(temp1.data)
+
+
+        x = SLL()
+        for i in range(6):
+          data = int(input("Data:"))
+          x.Insert(data)
+        x.display()
+
+
