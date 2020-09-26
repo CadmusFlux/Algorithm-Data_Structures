@@ -1,5 +1,5 @@
- Code  :
-
+ Code : 
+ 
         class Node:
           def __init__(self,data=None,next=None):
             self.data = data
@@ -28,12 +28,17 @@
               print("List Undeflow")
 
             else: 
-              while count2 != value:
-                temp1_prev = temp4
-                temp4 = temp4.next
-                count2 += 1
-              temp1_prev.next = temp4.next
-              temp4 = None
+              if temp4.next == None:
+                self.head = None
+              elif value == 0:
+                self.head = temp4.next
+              else:
+                while count2 != value:
+                  temp1_prev = temp4
+                  temp4 = temp4.next
+                  count2 += 1
+                temp1_prev.next = temp4.next
+                temp4 = None
 
           def insert_at_mid(self,position,data):
             count1 = 0
@@ -68,16 +73,22 @@
 
           def display(self):
             temp1 = self.head
-            while temp1.next != None:
-              print(temp1.data , "-->",end = " ")
-              temp1 = temp1.next
-            print(temp1.data)
+            if temp1 == None:
+              print("List Empty")
+            else:
+              while temp1.next != None:
+                print(temp1.data , "-->",end = " ")
+                temp1 = temp1.next
+              print(temp1.data)
 
 
         x = SLL()
-        for i in range(6):
+        ch = "y"
+        while ch == "y":
           data = int(input("Data:"))
           x.Insert(data)
+          ch = input("Enter another element: (y/n)")
         x.display()
+
 
 
