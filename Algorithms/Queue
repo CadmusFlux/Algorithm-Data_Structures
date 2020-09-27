@@ -1,0 +1,54 @@
+Code : 
+
+        class Node:
+            def __init__(self,data):
+              self.data  = data
+              self.next = None
+
+          class Queue:
+            def __init__(self):
+              self.head = None
+              self.tail = None
+
+            def push(self,data):
+              new_node = Node(data)
+              if self.head == None:
+                self.head = new_node
+                self.tail = new_node
+              else:
+                self.tail.next  = new_node
+                self.tail = new_node 
+
+
+            def pop(self):
+              self.head = self.head.next
+
+            def display(self):
+              temp = self.head
+              while temp != None:
+                print(temp.data , " || ",end = " ")
+                temp = temp.next
+              print("\n")
+
+
+
+
+          x = Queue()
+          choice = input("Enter your Choice :\n 1] Insert \n 2] Delete \n 3] Display \n 4] Exit")
+          while choice != "4":
+            if choice == "1":
+              data = input("Enter data to be inserted :")
+              x.push(data)
+            elif choice == "2":
+              x.pop()
+            elif choice == "3":
+              x.display()
+            elif choice == "4":
+              break
+            else:
+              print(" !!Enter valid choice!! ")
+
+            choice = input("Enter your Choice :\n 1] Insert \n 2] Delete \n 3] Display \n 4] Exit")
+
+  
+  
