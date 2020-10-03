@@ -1,0 +1,110 @@
+Code :
+
+      class Node:
+        def __init__(self,data):
+          self.data = data
+          self.lchild = None
+          self.rchild = None
+
+      class BST:
+
+        def __init__(self):
+          self.root = None
+
+        def insert(self,value):
+          new_node = Node(value)
+          if self.root == None:
+            self.root = new_node
+            return self
+          else:
+            current = self.root
+            while(True):
+              if current.data > value:
+                if current.lchild == None:
+                  current.lchild = new_node
+                  return self
+                else:
+                  current = current.lchild
+              else:
+                if current.rchild == None:
+                  current.rchild = new_node
+                  return self
+                else:
+                  current = current.rchild
+
+
+        def find(self,key):
+          if self.root == None:
+            return False
+          node,flag = self.root,False
+          while node != None and flag == False:
+            if node.data > key:
+              node = node.lchild
+            elif node.data < key :
+              node = node.rchild
+            else:
+              flag = True
+
+          if flag == False : 
+            return False
+          return node
+
+        def BFS(self):
+          node,data,queue = self.root, [] , []
+          queue.append(node)
+
+          while len(queue) != 0:
+            node = queue.pop(0)
+            data.append(node.data)
+            if node.lchild != None:
+              queue.append(node.lchild)
+            if node.rchild != None:
+              queue.append(node.rchild)
+
+          return data
+
+        def display(self):
+            temp,temp1 = self.root,self.root
+            while temp != None:
+              print(temp.data)
+              temp = temp.lchild
+            while temp1 != None:
+              print(temp1.data)
+              temp1 = temp1.rchild
+
+        def DFS_preorder(self):
+          data =  []
+          def traverse(node):
+            data.append(node.data)
+            if node.lchild != None:
+              traverse(node.lchild)
+            if node.rchild != None:
+              traverse(node.rchild)
+          traverse(self.root)
+          return data
+
+        def DFS_postorder(self):
+          data =  []
+          def traverse(node):
+
+            if node.lchild != None:
+              traverse(node.lchild)
+            if node.rchild != None:
+              traverse(node.rchild)
+            data.append(node.data)
+          traverse(self.root)
+          return data
+
+        def DFS_inorder(self):
+          data =  []
+          def traverse(node):
+
+            if node.lchild != None:
+              traverse(node.lchild)
+            data.append(node.data)
+            if node.rchild != None:
+              traverse(node.rchild)
+
+          traverse(self.root)
+          return data
+
