@@ -1,0 +1,75 @@
+Code : 
+      
+      class Node:
+        def __init__(self,val,priority):
+          self.value = val
+          self.priority = priority
+
+      class PriorityQueue:
+        def __init__(self):
+          self.values = []
+
+        def display(self):
+          return self.values[0].value  
+
+        def enqueue(self,val,priority):
+          value = Node(val,priority)
+          self.values.append(value)
+          def bubbleUp(element):
+            index = len(self.values) - 1
+            while index > 0:
+              parent_index = (index-1) // 2
+              if self.values[parent_index].priority > self.values[index].priority:
+                break
+              self.values[parent_index],self.values[index] = self.values[index],self.values[parent_index]
+              index = parent_index
+          bubbleUp(value) 
+          return self.values
+
+        def dequeue(self):
+          if len(self.values) < 1 :
+            print("Empty Heap")
+            return 0
+          max = self.values[0]
+          end = self.values.pop()
+          if len(self.values) > 0 :
+            self.values[0] = end
+            self.trickledown(end)
+          return max
+
+        def trickledown(self,elem):
+          index = 0
+          length  = len(self.values)
+
+          while True:
+            leftchildi = 2*(index) + 1
+            rightchildi =  2*(index) + 2
+            swap = None
+            if leftchildi < length : 
+              leftchild = self.values[leftchildi]
+              if leftchild.priority > elem.priority:
+                swap = leftchildi
+            if rightchildi < length : 
+              rightchild = self.values[rightchildi]
+              if (swap == None and rightchild.priority > elem.priority) or (swap != None and rightchild.priority > leftchild.priority):
+                swap = rightchildi
+
+            if swap == None : 
+              break
+            self.values[index] , self.values[swap] = self.values[swap] , self.values[index]
+            index = swap
+
+      x = PriorityQueue()
+      x.enqueue(23,8)
+      x.enqueue(13,7)
+      x.enqueue(2,10)
+      x.enqueue(42,5)
+      x.enqueue(63,4)
+      x.enqueue(82,3)
+      x.enqueue(93,2)
+      x.enqueue(12,1)
+      x.enqueue(213,9)
+      x.enqueue(33,10)
+      print(x.display())
+      print(x.dequeue())
+      print(x.display())
