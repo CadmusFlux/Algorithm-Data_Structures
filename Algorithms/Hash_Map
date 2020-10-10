@@ -1,0 +1,57 @@
+Code :
+
+      class HashTable:
+        def __init__(self,arraylen=17):
+          self.hashMap = [None]*arraylen
+
+        def hash_function(self,string,arraylen=17):
+          total = 0
+          prime = 7
+          for i in range(len(string)):
+            char = string[i]
+            value = ord(char) - 96
+            total = (total*prime+value) % arraylen
+
+          return total
+
+        def set(self,key,value):
+          index = self.hash_function(key)
+          if self.hashMap[index] == None :
+            self.hashMap[index] = []
+          self.hashMap[index].append([key,value])
+
+          return self.hashMap
+
+        def get(self,key):
+          index = self.hash_function(key)
+          if self.hashMap[index] != None:
+            for i in range(len(self.hashMap[index])):
+              if self.hashMap[index][i][0] == key:
+                return self.hashMap[index][i][1]
+                break
+
+          return "element not found"
+
+        def get_key(self):
+          keys = []
+          for i in range(len(self.hashMap)):
+            if self.hashMap[i] != None:
+              for j in range(len(self.hashMap[i])):
+                if self.hashMap[i][j] != None:
+                  keys.append(self.hashMap[i][j][0])
+
+          return keys
+
+        def get_value(self):
+          values = []
+          for i in range(len(self.hashMap)):
+            if self.hashMap[i] != None:
+              for j in range(len(self.hashMap[i])):
+                if self.hashMap[i][j] != None:
+                  values.append(self.hashMap[i][j][1])
+
+          return values
+          
+          
+          
+          
