@@ -54,15 +54,45 @@ Code :
                 connections = self.adjacency_list[vertex].pop()
                 self.remove_edge(vertex,connections)
               self.adjacency_list.pop(vertex)
-          g = graph()
-          g.add_vertex("Tokyo")
-          g.add_vertex("San Fransisco")
-          g.add_vertex("Dallas")
-          g.add_vertex("Ohio")
-          g.add_edge("Tokyo","San Fransisco")
-          g.add_edge("Tokyo","Ohio")
-          g.add_edge("Dallas","San Fransisco")
-          g.add_edge("Dallas","Ohio")
+              
+              
+              
+            def dfs_traversal(self,vertex):
 
-          g.remove_vertex2("Tokyo")
-          print("\n",g.adjacency_list)
+                result = []
+                visited = {}
+
+                def helper(vertex):
+
+                  if vertex == None:
+                    return None
+                  visited[vertex] = True
+                  result.append(vertex)
+                  while len(self.adjacency_list[vertex])>0:
+                    neighbour = self.adjacency_list[vertex].pop()
+
+                    if neighbour not in visited.keys():
+
+                      helper(neighbour)
+
+                helper(vertex)
+
+                return result
+
+
+
+            g = graph()
+            g.add_vertex("Tokyo")
+            g.add_vertex("San Fransisco")
+            g.add_vertex("Dallas")
+            g.add_vertex("Ohio")
+            g.add_vertex("New york")
+            g.add_vertex("Albuquerque")
+            g.add_edge("Tokyo","San Fransisco")
+            g.add_edge("Tokyo","Ohio")
+            g.add_edge("Dallas","San Fransisco")
+            g.add_edge("Dallas","New york")
+            g.add_edge("Ohio","Albuquerque")
+            g.add_edge("New york","Albuquerque")
+            print("\n",g.adjacency_list)
+            print(g.dfs_traversal("Tokyo"))
