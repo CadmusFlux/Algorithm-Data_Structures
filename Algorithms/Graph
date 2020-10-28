@@ -1,0 +1,68 @@
+Code : 
+      
+       import copy
+
+          class graph:
+            def __init__(self):
+              self.adjacency_list = {}
+
+            def add_vertex(self,vertex):
+              if vertex not in self.adjacency_list.keys(): 
+                self.adjacency_list[vertex] = []
+              else:
+                print("kuch naya bata")
+
+            def add_edge(self,vertex1,vertex2):
+
+              if vertex1 in self.adjacency_list.keys():
+                self.adjacency_list[vertex1].append(vertex2)
+              else:
+                print("One of the given vertex doesn't exist")
+              if vertex2 in self.adjacency_list.keys():
+                self.adjacency_list[vertex2].append(vertex1)
+              else:
+                print("One of the given vertex doesn't exist")
+
+            def remove_edge(self,vertex1,vertex2):
+              for i in range(len(self.adjacency_list[vertex1])):
+                if self.adjacency_list[vertex1][i] == vertex2:
+                  self.adjacency_list[vertex1].pop(i)
+                  break
+
+              for i in range(len(self.adjacency_list[vertex2])):
+                if self.adjacency_list[vertex2][i] == vertex1:
+                  self.adjacency_list[vertex2].pop(i)
+                  break
+         
+         # Note : This code give pass by reference error hence we use deep copy.
+         
+         
+            def remove_vertex(self,vertex):
+
+              vertex_val = copy.deepcopy(self.adjacency_list[vertex])
+              for i in vertex_val:
+                self.remove_edge(vertex,i)
+              self.adjacency_list.pop(vertex)
+              
+              
+        # Note : Another method which doen't use the dictionary for iterating hence we don'te require deep copy.
+        
+        
+            def remove_vertex2(self,vertex):
+
+              while len(self.adjacency_list[vertex])>0:
+                connections = self.adjacency_list[vertex].pop()
+                self.remove_edge(vertex,connections)
+              self.adjacency_list.pop(vertex)
+          g = graph()
+          g.add_vertex("Tokyo")
+          g.add_vertex("San Fransisco")
+          g.add_vertex("Dallas")
+          g.add_vertex("Ohio")
+          g.add_edge("Tokyo","San Fransisco")
+          g.add_edge("Tokyo","Ohio")
+          g.add_edge("Dallas","San Fransisco")
+          g.add_edge("Dallas","Ohio")
+
+          g.remove_vertex2("Tokyo")
+          print("\n",g.adjacency_list)
