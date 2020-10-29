@@ -78,6 +78,29 @@ Code :
                 helper(vertex)
 
                 return result
+            
+              def bfs_traversal(self,vertex):
+
+                      queue = [vertex]
+                      result = []
+                      visited = {}
+                      visited[vertex] = True
+                      while len(queue) > 0:
+
+
+                        Current_vertex = queue.pop(0)
+                        result.append(Current_vertex)
+
+                        while len(self.adjacency_list[Current_vertex])>0:
+
+                          neighbours = self.adjacency_list[Current_vertex].pop()
+                          if neighbours not in  visited.keys():
+                            visited[neighbours] = True
+                            queue.append(neighbours)
+
+
+
+                      return result
 
 
 
