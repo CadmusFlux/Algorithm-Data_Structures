@@ -1,0 +1,119 @@
+Code :
+
+      import copy
+      import math
+
+      class priority_queue:
+
+        def __init__(self):
+          self.list = []
+
+        def enqueue(self,val,priority):
+
+          self.list.append({"value":val,"priority":priority})
+          self.sortq(self.list)
+
+
+
+        def dequeue(self):
+          return self.list.pop(0)
+
+        def sortq(self,list):
+          for i in range(len(self.list)):
+            min = self.list[i]["priority"]
+
+            for j in range(i+1,len(self.list)):
+
+              if self.list[j]["priority"] < min:
+                min = self.list[j]["priority"]
+                self.list[i],self.list[j] = self.list[j], self.list[i]
+
+
+
+
+
+      class WeightedGraph:
+
+        def __init__(self):
+          self.adjacency_list = {}
+
+        def add_vertex(self,vertex):
+          if vertex not in self.adjacency_list.keys():
+            self.adjacency_list[vertex] = []
+
+        def add_edge(self,vertex1,vertex2,weight):
+
+          edge = {"node":vertex2,"weight":weight}
+          self.adjacency_list[vertex1].append(copy.deepcopy(edge))
+          edge = {"node":vertex1,"weight":weight}
+          self.adjacency_list[vertex2].append(copy.deepcopy(edge))
+
+        def Dijkstra(self,start,finish):
+
+          nodes = priority_queue()
+          distances = {}
+          previous = {}
+          path = []
+
+          for i in self.adjacency_list.keys():
+
+            if i == start:
+              distances[i] = 0
+              nodes.enqueue(i,0)
+            else:
+              distances[i] = math.inf
+              nodes.enqueue(i,math.inf)
+            previous[i] = None
+
+          while len(nodes.list) > 0:
+            smallest = nodes.dequeue()["value"]
+
+            if smallest == finish:
+
+              while previous[smallest] != None:
+                path.append(smallest)
+                smallest = previous[smallest]
+              path.append(smallest)
+              break
+            if smallest != None or distances[smallest] != math.inf:
+
+              for neighbour in self.adjacency_list[smallest]:
+
+                candidate = distances[smallest] + neighbour["weight"]
+                if candidate < distances[neighbour["node"]]:
+                  distances[neighbour["node"]] = candidate 
+                  previous[neighbour["node"]] = smallest
+                  nodes.enqueue(neighbour["node"],candidate)
+
+          return path[::-1]
+
+
+
+
+
+
+
+
+      g = WeightedGraph()
+      g.add_vertex("Tokyo")
+      g.add_vertex("San Fransisco")
+      g.add_vertex("Dallas")
+      g.add_vertex("Ohio")
+      g.add_vertex("New york")
+      g.add_vertex("Albuquerque")
+      g.add_edge("Tokyo","San Fransisco",2)
+      g.add_edge("Tokyo","Ohio",3)
+      g.add_edge("Dallas","San Fransisco",4)
+      g.add_edge("Dallas","New york",5)
+      g.add_edge("Ohio","Albuquerque",6)
+      g.add_edge("New york","Albuquerque",7)
+      print("\n",g.Dijkstra("Tokyo","Albuquerque"))
+
+      # q = priority_queue()
+      # q.enqueue("ayush",33)
+      # q.enqueue("Rohit",45)
+      # q.enqueue("abhishek",32)
+      # q.enqueue("Neha",98)
+      # q.enqueue("Manisha",55)
+      # print(q.list)
+
