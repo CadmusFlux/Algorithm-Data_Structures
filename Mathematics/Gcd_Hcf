@@ -1,0 +1,17 @@
+Theory : 
+
+Code : 
+
+        M = [67, 7, 59, 61]
+        x = [0, 2, 3, 4]
+
+        def gcd(a,b):
+            if b == 0:
+                return a
+            else:
+                return gcd(b,a%b)
+
+
+        for i in range(len(M)):
+            for j in range(i+1,len(M)):
+                print(gcd(M[i],M[j]))
