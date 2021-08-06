@@ -1,0 +1,16 @@
+dict1 = {}
+string = 'rajasoft'
+vowels = 0
+string = string.lower()
+
+for i in string:
+    if i in ['a','e','i','o','u']:
+        vowels += 1
+    else:
+        if i in dict1.keys():
+            dict1[i] += 1
+        else:
+            dict1[i] = 1
+
+return dict1,vowels
+    
